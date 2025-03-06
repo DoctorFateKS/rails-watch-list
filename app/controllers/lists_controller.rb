@@ -15,7 +15,10 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(params.require(:list).permit(:name))
-    @list.save
-    redirect_to @list
+    if @list.save
+      redirect_to @list
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 end
