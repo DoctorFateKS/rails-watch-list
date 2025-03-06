@@ -4,3 +4,6 @@
     <li><%= link_to list.name, list_path(list)%></li>
   <% end %>
 </ul>
+  <%= link_to new_list_path, data: { turbo: true, turbo_frame: "modal" } do %>
+    New List
+  <% end %>
