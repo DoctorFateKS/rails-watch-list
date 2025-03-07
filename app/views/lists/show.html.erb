@@ -1,11 +1,20 @@
-<h2><%= @list.name %></h2>
-<%= "Vous n'avez pas sauvegarder de films" if @list.movies.empty? %>
-<%= link_to new_list_bookmarks_path(list_id: @list), data: { turbo: true, turbo_frame: 'modal' } do %>
-  Add a movie
-<% end %>
-<%= link_to "delete this list", @list, method: :delete, data: { confirm: 'Are you sure to delete this list ?' } %>
-<% @list.movies.each do |movie| %>
-  <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
-  <p><%= movie.title %> / <%= movie.rating %></p>
-  <p><%= movie.overview %></p>
-<% end %>
+<div class="container m-4">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2><%= @list.name %></h2>
+    <%= link_to "delete this list", @list, method: :delete, data: { confirm: 'Are you sure to delete this list ?' } %>
+  </div>
+  <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#new_movie_modal">
+    Add a Movie
+  </button>
+  <div class="row mt-4">
+    <% @list.movies.each do |movie| %>
+      <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title"><%= movie.title %> <span class="badge bg-success"><%= movie.rating %></span></h5>
+            <p class="card-text"><%= movie.overview %></p>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

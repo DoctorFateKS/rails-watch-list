@@ -1,9 +1,15 @@
-<h1>My Lists</h1>
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list)%></li>
-  <% end %>
-</ul>
-  <%= link_to new_list_path, data: { turbo: true, turbo_frame: "modal" } do %>
-    New List
-  <% end %>
+<div class="container mt-5">
+  <h1 class = "text-center display-1 m-5 shadow-lg fw-bold">🎥 List of Movies 🎥</h1>
+  <div class="row justify-content-center">
+    <ul class="list-group shadow-sm">
+      <% @lists.each do |list| %>
+        <li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between"><%= link_to list.name, list_path(list), class:"text-dark fw-semibold" %>🍿</li>
+      <% end %>
+    </ul>
+    <div class="text-center m-3">
+  </div>
+    <%= link_to new_list_path, data: { turbo: true, turbo_frame: "modal" }, class: "btn btn-lg btn-success shadow-sm" do %>
+      ➕
+    <% end %>
+  </div>
+</div>
