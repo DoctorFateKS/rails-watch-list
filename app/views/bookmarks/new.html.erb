@@ -1,8 +1,6 @@
-<h1>Add a Bookmark</h1>
+<h3>Add a movie</h3>
 <%= simple_form_for [@list, @bookmark] do |f| %>
-  <%= f.input :title, label: "Title", placeholder: "Enter bookmark title" %>
-  <%= f.input :url, label: "URL", placeholder: "Enter bookmark URL" %>
-  <%= f.input :description, as: :text, label: "Description", placeholder: "Enter bookmark description" %>
-
+  <%= f.input :comment %>
+  <%= f.association :movie %>
   <%= f.submit %>
 <% end %>
